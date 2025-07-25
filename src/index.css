@@ -18,11 +18,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  width: 100;
+}
+
+body
+{
+  background-color: white;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: black;
     background-color: #ffffff;
   }
   a:hover {

@@ -1,5 +1,17 @@
 import { useState } from 'react'
 import './App.css'
+import luffy from './assets/luffy.webp'
+import zoro from './assets/zoro.webp'
+import sanji from './assets/sanji.webp'
+import shanks from './assets/shanks.webp'
+import mihawk from './assets/mihawk.webp'
+import law from './assets/law.webp'
+import bigMom from './assets/big mom.webp'
+import kaido from './assets/kaido.webp'
+import robin from './assets/robin.webp'
+import whitebeard from './assets/whitebeard.webp'
+import ace from './assets/ace.webp'
+import kid from './assets/kid.webp'
 
 const getFilteredProducts = (query, category, items) => {
     return items.filter(item => {
@@ -14,16 +26,18 @@ function App() {
   const [value, setValue] = useState("");
 
   const products = [
-    { id: 1, name: "Apple iPhone 13", category: "Smartphone" },
-    { id: 2, name: "Samsung Galaxy S21", category: "Smartphone" },
-    { id: 3, name: "Sony WH-1000XM4", category: "Headphones" },
-    { id: 4, name: "Dell XPS 13", category: "Laptop" },
-    { id: 5, name: "Apple MacBook Pro", category: "Laptop" },
-    { id: 6, name: "Google Pixel 6", category: "Smartphone" },
-    { id: 7, name: "Bose QuietComfort 35 II", category: "Headphones" },
-    { id: 8, name: "HP Spectre x360", category: "Laptop" },
-    { id: 9, name: "Apple AirPods Pro", category: "Headphones" },
-    { id: 10, name: "Microsoft Surface Pro 7", category: "Laptop" }
+    { id: 1, name: "luffy", category: "strawhat pirate", image: luffy },
+    { id: 2, name: "zoro", category: "strawhat pirate", image: zoro },
+    { id: 3, name: "sanji", category: "strawhat pirate", image: sanji },
+    { id: 4, name: "shanks", category: "emperor", image: shanks },
+    { id: 5, name: "mihawk", category: "warlord", image: mihawk },
+    { id: 6, name: "law", category: "warlord", image: law },
+    { id: 7, name: "big mom", category: "emperor", image: bigMom },
+    { id: 8, name: "kaido", category: "emperor", image: kaido },
+    { id: 9, name: "robin", category: "strawhat pirate", image: robin },
+    { id: 10, name: "whitebeard", category: "emperor", image: whitebeard },
+    {id: 11, name: "ace", category: "spade pirate", image: ace },
+    {id: 12, name: "kid", category: "kid pirate", image: kid }
   ]
 
   const filteredProducts = getFilteredProducts(query, value, products);
@@ -33,11 +47,11 @@ function App() {
   }
 
   return (
-    <div style={{backgroundColor: "black", color: "white"}}>
-      <div style={{position: "relative", height: "200px", backgroundColor: "black", color: "white"}}>
+    <div className='App'>
+      <div style={{position: "relative", height: "200px"}}>
 
         <div className="content">
-          <label >Search</label>
+          <label >wanted(dead or alive)</label>
           <input type="text" onChange={ (e) => setQuery(e.target.value)}/>
           <div>
             <select className='form-select' value={value} onChange={handleSelect}>
@@ -49,8 +63,13 @@ function App() {
           </div>
         </div>
       </div> 
-      <ul style={{backgroundColor: "black", color: "white"}}>
-        {filteredProducts.map(product => <h1 key={product.id}>{product.name}</h1>)}
+      <ul style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))", gap: "7rem", paddingLeft: "2rem"}}>
+        {filteredProducts.map(product => (
+          <li key={product.id} style={{display: "flex", alignItems: "center", marginBottom: "1rem", boxShadow: "rgba(149, 157, 165, 0.2) 0px 8px 24px", padding: "2rem"}}>
+            <img src={product.image} alt={product.name} style={{width: 150, height: 150, marginRight: 16, borderRadius: 8}} />
+            <h1 style={{margin: 0, fontSize: "1.2rem", paddingLeft: "2rem"}}>{product.name}</h1>
+          </li>
+        ))}
       </ul>
     </div>
   )
